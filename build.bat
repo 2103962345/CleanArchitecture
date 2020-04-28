@@ -12,16 +12,19 @@ if not "%BuildCounter%" == "" (
 REM Detect MSBuild 15.0 path
 if exist "%programfiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\15.0\Bin\MSBuild.exe" (
     set msbuild="%programfiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\15.0\Bin\MSBuild.exe"
+REM %msbuild%
 )
 if exist "%programfiles(x86)%\Microsoft Visual Studio\2019\Professional\MSBuild\15.0\Bin\MSBuild.exe" (
     set msbuild="%programfiles(x86)%\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe"
+REM %msbuild%
 )
 if exist "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" (
     set msbuild="%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
+REM %msbuild%
 )
 
 REM (optional) build.bat is in the root of our repo, cd to the correct folder where sources/projects are
-cd src
+
 
 REM Restore
 call dotnet restore
@@ -32,8 +35,11 @@ call "%msbuild%" CleanArchitecture.sln /p:Configuration="%config%" /m /v:M /fl /
 REM call dotnet build --configuration %config%
 if not "%errorlevel%"=="0" goto failure
 
+cd src
+REM %cd%
+
 REM Unit tests
-call dotnet test src\CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
+call dotnet test CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
 if not "%errorlevel%"=="0" goto failure
 
 REM Package
