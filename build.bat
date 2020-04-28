@@ -33,12 +33,12 @@ REM call dotnet build --configuration %config%
 if not "%errorlevel%"=="0" goto failure
 
 REM Unit tests
-call dotnet test CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
+call dotnet test src\CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
 if not "%errorlevel%"=="0" goto failure
 
 REM Package
 mkdir %cd%\..\artifacts
-call dotnet pack CleanArchitecture --configuration %config% %packversionsuffix% --output %cd%\..\artifacts
+call dotnet pack src\CleanArchitecture.Core --configuration %config% %packversionsuffix% --output %cd%\..\artifacts
 if not "%errorlevel%"=="0" goto failure
 
 :success
