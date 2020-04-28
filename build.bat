@@ -44,7 +44,7 @@ if not "%errorlevel%"=="0" goto failure
 
 REM Package
 mkdir %cd%\..\artifacts
-call dotnet pack src\CleanArchitecture.Core --configuration %config% %packversionsuffix% --output %cd%\..\artifacts
+call dotnet pack CleanArchitecture.Core --configuration %config% %packversionsuffix% --output %cd%\..\artifacts
 if not "%errorlevel%"=="0" goto failure
 
 :success
