@@ -38,6 +38,7 @@ if not "%errorlevel%"=="0" goto failure
 cd src
 REM %cd%
 
+
 REM Unit tests
 call dotnet test CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
 if not "%errorlevel%"=="0" goto failure
