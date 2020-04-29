@@ -39,7 +39,7 @@ cd src
 REM %cd%
 
 REM Unit tests
-%XUnit20Path% CleanArchitecture.Test\CleanArchitecture.Test\bin\Debug\%config%\CleanArchitecture.Test.dll
+%XUnit20Path% CleanArchitecture.Test\CleanArchitecture.Test\bin\Release\netcoreapp3.0\CleanArchitecture.Test.dll
 if not "%errorlevel%"=="0" goto failure
 
 REM Package
