@@ -39,7 +39,7 @@ cd src
 REM %cd%
 
 REM Unit tests
-%XUnit20Path% CleanArchitecture.Test\CleanArchitecture.Test\bin\Debug\%config%\CleanArchitecture.Test.dll
+call dotnet test CleanArchitecture.Test\CleanArchitecture.Test.csproj --configuration %config% --no-build
 if not "%errorlevel%"=="0" goto failure
 
 REM Package
